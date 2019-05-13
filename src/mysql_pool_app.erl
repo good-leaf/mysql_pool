@@ -17,4 +17,4 @@ init_pool() ->
 	lists:map(fun({PoolArgs, WorkerArgs}) -> init_pool(PoolArgs, WorkerArgs) end, Pools).
 
 init_pool(PoolArgs, WorkerArgs) ->
-	poolboy:start(PoolArgs, WorkerArgs).
+	pool_sup:start_child([PoolArgs, WorkerArgs]).
